@@ -1,0 +1,17 @@
+
+// Extensão .scss para usar o SASS
+
+.title {
+   color: purple;
+
+
+   // Com o SASS podemos ter estilos em cascata
+   span {
+      color: blueviolet;
+   }
+
+}
+
+#comID {
+   color: royalblue;
+}
