@@ -1,13 +1,13 @@
 ## Packages utilizados
 
-# TypeScript
+### TypeScript
    Em modo desenvolvimento, mudaremos a extensão dos arquivos para .tsx
 
    ```bash
       npm install typescript @types/react @types/node -D
    ```
 
-# SASS
+### SASS
    Para pre compilação de estilos, e fazer de modo mais poderoso
 
    ```bash

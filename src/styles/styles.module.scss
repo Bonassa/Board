@@ -3,11 +3,12 @@
 
 .title {
    color: purple;
-
+   font-size: 2rem;
 
    // Com o SASS podemos ter estilos em cascata
    span {
-      color: blueviolet;
+      color: var(--azul);
+      font-size: 3rem;
    }
 
 }
