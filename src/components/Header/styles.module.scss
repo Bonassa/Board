@@ -1,0 +1,47 @@
+
+.headerContainer {
+   height: 6rem;
+   background-color: var(--primary);
+}
+
+.headerContent {
+   max-width: 1128px;
+   height: 6rem;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+
+   #logo {
+      margin-left: 2rem;
+      
+      img {
+         cursor: pointer;
+      }
+   }
+
+   nav {
+      margin: 0 6rem;
+
+      a {
+         color: var(--white);
+         padding: 0.5rem 1rem;
+         border-radius: 2rem;
+         transition: ease-in-out .2s;
+         
+         /*&:not(:last-child){
+            margin-right: 1rem;
+         }*/
+
+         // Para não aplicar no primeiro
+         & + a {
+            margin-left: 1rem;
+         }
+         
+         &:hover {
+            background-color: var(--bg) ;
+            color: var(--primary);
+         }
+      }
+   }
+}

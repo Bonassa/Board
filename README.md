@@ -1,3 +1,11 @@
+# Board (Em Desenvolvimento)
+
+O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
+
+## Framework Utilizado
+
+[NextJS]
+
 ## Packages utilizados
 
 ### TypeScript
@@ -15,3 +23,10 @@
    ```
 
    Utilizaremos duas extensões do VS Code, o Sass e o CSS Modules
+
+### React Icons
+   Para utilização de icones svg
+
+   ```bash
+      npm install react-icons
+   ```

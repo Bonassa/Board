@@ -1,0 +1,64 @@
+
+#login {
+   // display: flex;
+   // justify-content: flex-end;
+   // flex: 1;
+
+   // * Joga totalmente pro outro lado
+   margin-left: auto;
+   margin-right: 2rem;
+
+   #sessionOff {
+      display: flex;
+      align-items: center;
+
+      border: none;
+      background-color: transparent;
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      transition: ease-in-out .2s;
+
+      svg {
+         fill: var(--emphasis);
+         margin-right: 0.5rem;
+      }
+
+      &:hover {
+         background-color: var(--emphasis);
+         color: var(--primary);
+         box-shadow: 0 0 8px var(--emphasis);
+
+         svg {
+            fill: var(--primary);
+         }
+      }
+   }
+
+   #sessionOn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      color: var(--white);
+
+      img {
+         width: 2rem;
+         height: 2rem;
+         border-radius: 50%;
+         margin-right: 0.5rem;
+      }
+
+      svg {
+         color: var(--secondary);
+         margin-left: 1rem;
+         margin-top: 3px;
+
+         &:hover {
+            filter: brightness(0.7);
+         }
+      }
+   }
+}
