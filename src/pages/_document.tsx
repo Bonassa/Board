@@ -18,6 +18,9 @@ export default class MyDocument extends Document{
                 * Fontes personalizadas, favicon, scripts etc...
                 * Não devemos utilizar o title aqui, pois não será possível alterar em cada página
                 */}
+               <link rel="preconnect" href="https://fonts.googleapis.com" />
+               <link rel="preconnect" href="https://fonts.gstatic.com" />
+               <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand&display=swap" rel="stylesheet" />
             </Head>
             <body>
                {/**O body é o padrão do html, não precisa importar ele 

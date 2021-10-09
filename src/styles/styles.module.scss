@@ -1,18 +1,77 @@
 
 // Extensão .scss para usar o SASS
+// * Estilos da página index - HOME
 
-.title {
-   color: purple;
-   font-size: 2rem;
-
-   // Com o SASS podemos ter estilos em cascata
-   span {
-      color: var(--azul);
-      font-size: 3rem;
-   }
-
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
-#comID {
-   color: royalblue;
+.banner {
+   margin-top: 4rem;
+
+   img {
+      width: 27rem;
+   }
+}
+
+.pageContent {
+   margin-top: 2rem;
+   text-align: center;
+   color: var(--primary);
+
+   h1 {
+      font-size: 2rem;
+      font-weight: 600;
+   }
+
+   h2 {
+      margin-top: 0.2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+   }
+
+   h3 {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      span {
+         text-transform: uppercase;
+         font-weight: 600;
+         color: var(--verde)
+      }
+   }
+}
+
+.sponsors {
+   margin: 2rem;
+   text-align: center;
+
+   h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+   }
+
+   div {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      width: 500px;
+      justify-content: center;
+
+      img {
+         width: 3rem;
+         height: 3rem;
+         border-radius: 50%;
+         margin: 0.4rem;
+         transition: all .2s;
+
+         &:hover{
+            transform: scale(1.1);
+         }
+      }
+   }
 }

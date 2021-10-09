@@ -17,9 +17,36 @@ export default function Home() {
             <title>Board - Organizando Suas Tarefas</title>
          </Head>
 
-         <div>
-            <h1 className={styles.title}>Index do <span>NextJS</span></h1>
-            <h2 id={styles.comID}>Com ID</h2>
+         <div className={styles.container}>
+            <div className={styles.banner}>
+               <img src="/images/board-user.svg" alt="Imagem de um notbook exemplificando aplicação" />
+            </div>
+            <div className={styles.pageContent}>
+               <h1>Uma Ferramenta para Organizar a sua Vida</h1>
+               <h2>Descreva suas tarefas, Planeje e organize seu dia a dia</h2>
+               <h3><span>100% gratuita</span> e online</h3>
+            </div>
+            <div className={styles.sponsors}>
+               <h4>Apoiadores</h4>
+
+               <div>
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+               </div>
+            </div>
          </div>
       </>
    )

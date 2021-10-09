@@ -2,11 +2,32 @@
 
 O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
 
-## Framework Utilizado
+## Como utilizar
 
-[NextJS]
+   Primeiramente instale as dependências do projeto através do comando
 
-## Packages utilizados
+   ```bash
+      npm install
+   ```
+
+   Após instalar as dependências o projeto já pode ser executado. Para executar em modo desenvolvimento
+
+   ```bash
+      npm run dev
+   ```
+   ou usando o yarn
+   ```bash
+      yarn dev
+   ```
+
+## 🛠 Tecnologias utilizadas
+
+- [React](https://pt-br.reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [SASS](https://sass-lang.com/)
+
+##  Packages utilizados
 
 ### TypeScript
    Em modo desenvolvimento, mudaremos a extensão dos arquivos para .tsx
