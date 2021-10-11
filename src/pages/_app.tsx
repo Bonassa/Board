@@ -12,16 +12,20 @@ import Header from '../components/Header';
 // Adicionando estilos globais na aplicação, através do _app que é renderizado em todas as pages
 import '../styles/global.scss';
 
+// Adicionando o Provider do Next Auth para espalhar por toda a aplicação a informação da sessão do usuário
+// Renomeando o provider para ficar mais facil de identificar
+import { Provider as NextAuthProvider } from 'next-auth/client';
+
 // Acidionando tipagem no Component
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		// Utilizaremos um fragment para não afetar em estilizações nem nada e retornar o Header antes das páginas
-		<>
+		// Envolvendo toda a aplicação com o Provider do auth, passando por parâmentro a nossa session
+		<NextAuthProvider session={pageProps.session}>
 			{/**Adicionando o Header */}
 			<Header/>
 			{/* Essa tag é responsável por renderizar as páginas*/}
 			<Component {...pageProps} />
-		</>
+		</NextAuthProvider>
 	)
 }
 

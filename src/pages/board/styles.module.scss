@@ -1,0 +1,144 @@
+
+.container {
+   max-width: 1028px;
+   margin: 2rem auto;
+   background-color: var(--primary);
+   padding: 2rem 4rem;
+   border-radius: 8px;
+
+   form {
+      display: flex;
+      flex-direction: row;
+
+      input {
+         flex: 1;
+         border: none;
+         padding: 0.5rem 1rem;
+         border-radius: 6px 0 0 6px;
+         background-color: var(--bg);
+      }
+
+      button {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: none;
+         padding: 0 1.5rem;
+         border-radius: 0 6px 6px 0;
+         background-color: var(--emphasis);
+
+         &:hover {
+            background-color: var(--emphasisC);
+         }
+      }
+   }
+
+   h2 {
+      margin: 2rem 0;
+      color: var(--bg);
+      font-size: 1.2rem;
+   }
+}
+
+.taskList {
+   background-color: var(--primaryC);
+   border-radius: 8px;
+   padding: 0.5rem 1rem;
+   margin: 1rem 0;
+
+   p {
+      color: var(--bg);
+      line-height: 150%;
+      font-size: 1rem;
+      cursor: pointer;
+   }
+
+   .actions {
+      display: flex;
+      flex-direction: row;
+      margin: 1rem 0 0.3rem 0;
+      
+      div {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         margin-right: 2rem;
+
+         color: var(--bg);
+
+         svg {
+            margin-right: 0.2rem;
+            color: var(--emphasis)
+         }
+      }
+
+      .edit {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid transparent;
+         background-color: transparent;
+         color: var(--bg);
+         padding: 5px 5px;
+         transition: ease-in-out .2s;
+
+         svg {
+            margin-right: 0.2rem;
+            color: var(--emphasis)
+         }
+
+         &:hover {
+            border-bottom: 1px solid var(--emphasis);
+         }
+      }
+
+      .delete {
+         margin-left: auto;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: transparent;
+         border: none;
+         color: var(--bg);
+         margin-top: -2.5rem;
+         margin-bottom: -3px;
+         transition: ease-in-out .2s;
+
+         svg {
+            margin-right: 0.2rem;
+            color: var(--vermelho);
+         }
+
+         &:hover {
+            background-color: var(--vermelho);
+            padding: 0 1.5rem 0 0.3rem;
+            border-radius: 6px;
+         }
+      }
+   }
+}
+
+.sponsorView {
+   max-width: 1028px;
+   margin: 2rem auto;
+   background-color: var(--primary);
+   border-radius: 8px;
+   padding: 1rem 3rem;
+
+   h3 {
+      color: var(--emphasis);
+      font-size: 1.5rem;
+      font-weight: 500;
+   }
+
+   div {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+      color: var(--bg);
+
+      svg {
+         margin-right: 0.2rem;
+      }
+   }
+}

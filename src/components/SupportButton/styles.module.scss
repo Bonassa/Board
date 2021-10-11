@@ -1,0 +1,40 @@
+
+#main {
+   z-index: -1;
+   position: fixed;
+   right: 3rem;
+   bottom: 3rem;
+   width: 5rem;
+   height: 5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   border: none;
+   background-color: var(--emphasis);
+   box-shadow: 0 0 8px var(--emphasis);
+   transition: all 0.3s;
+
+   svg {
+      color: var(--primary);
+   }
+
+   span {
+      display: none;
+   }
+
+   &:hover {
+      width: 8rem;
+      border-radius: 1rem;
+
+      span {
+         display: block;
+      }
+
+      svg {
+         width: 2rem;
+         margin-right: 0.3rem;
+      }
+   }
+
+}

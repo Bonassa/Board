@@ -51,3 +51,16 @@ O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
    ```bash
       npm install react-icons
    ```
+
+### Next Auth
+   Para a autenticação de usuários com o GitHub.
+
+   ```bash
+      npm install next-auth
+   ```
+
+   Types que não vem junto com o next-auth
+
+   ```bash
+      npm install @types/next-auth -D
+   ```
