@@ -3,6 +3,9 @@
 // E no .tsx (TypeScript React) utilizamos como classe ou ID, passando o style. nome da classe ou ID
 import styles from '../styles/styles.module.scss';
 
+// Geração estática de página
+import { GetStaticProps } from 'next';
+
 // Para a criação de titulos dinâmicos utilizaremos o Head do Next/Head
 import Head from 'next/head';
 
@@ -50,4 +53,17 @@ export default function Home() {
          </div>
       </>
    )
+}
+
+
+// Fazendo a geração estatica da página, com o getStaticProps
+// os : são para tipagem com o typeScript
+export const getStaticProps: GetStaticProps = async () => {
+   return {
+      props: {
+
+      },
+      // A quanto tempo a página será regerada no servidor, (em segundos)
+      revalidate: 60 * 60 
+   }
 }

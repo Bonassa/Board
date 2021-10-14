@@ -1,6 +1,5 @@
 
 #main {
-   z-index: -1;
    position: fixed;
    right: 3rem;
    bottom: 3rem;
@@ -26,6 +25,7 @@
    &:hover {
       width: 8rem;
       border-radius: 1rem;
+      background-color: var(--emphasisC);
 
       span {
          display: block;

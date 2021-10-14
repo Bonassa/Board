@@ -10,4 +10,37 @@ export default NextAuth({
          scope: 'read:user'
       }),
    ],
+
+   // Enviando a session para todas as paginas, para fazer o controle de usuário logado
+   callbacks: {
+      async session(session, profile){
+         // Função chamada quando você já tem uma sessão
+         try{
+            // retornando a sessão do usuário
+            return {
+               ...session,
+               id: profile.sub
+            }
+         } catch {
+            // Iremos retornar uma objeto, pois ele já tem uma sessão.
+            return {
+               ...session,
+               id: null
+            }
+         }
+      },
+      async signIn(user, account, profile){
+         // Função chamada quando você faz o login na aplicação
+         const { email } = user;
+
+         // Como esse método pode falhar (é uma Promisse), valida erros
+         try {
+            return true;
+         } catch(err) {
+            console.log('Deu erro: ', err);
+            // returno falso para não retornar uma sessão
+            return false;
+         }
+      }
+   }
 })

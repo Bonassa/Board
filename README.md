@@ -26,6 +26,7 @@ O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [SASS](https://sass-lang.com/)
+- [FireBase]() v8.8.1
 
 ##  Packages utilizados
 
@@ -63,4 +64,18 @@ O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
 
    ```bash
       npm install @types/next-auth -D
+   ```
+
+### Firebase v8.8.1
+   Para o banco de dados da aplicação, o firebase na versão 8.8.1
+
+   ```bash
+      npm install firebase@^8.8.1
+   ```
+
+### Date FNS
+   Para trabalhar com datas, biblioteca date-fns
+
+   ```bash
+      npm install date-fns
    ```

@@ -21,7 +21,7 @@ export default function SignInButton(){
          {session ? (
             <button id={styles.sessionOn} type="button" onClick={() => signOut()}>
                <img src={session.user.image} alt="Foto do usuário" />
-               <span>Olá {session.user.name}</span>
+               <span>{session.user.name}</span>
                <FiX size={18}/>
             </button>
          ) : (
