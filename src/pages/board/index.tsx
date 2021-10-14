@@ -80,17 +80,21 @@ export default function Board({ user, data }: BoardProps) {
 
    }
 
-   // async function handleDelete(id:string) {
-   //    alert(id);
+   async function handleDelete(id:string) {
 
-   //    /*await firebase.firestore().collection('task').doc(id).delete()
-   //    .then(() => {
-   //       console.log('Tarefa excluida com sucesso!');
-   //    })
-   //    .catch((error) => {
-   //       console.log('Erro ao deletar, ', error)
-   //    })*/
-   // }
+      await firebase.firestore().collection(user.id).doc(id).delete()
+      .then(() => {
+         console.log('Tarefa excluida com sucesso!');
+         let updated = taskList.filter( item => {
+            return (item.id !== id)
+         })
+
+         setTaskList(updated);
+      })
+      .catch((error) => {
+         console.log('Erro ao deletar, ', error)
+      })
+   }
 
    return (
       // Editando cabeçalho da página
@@ -132,7 +136,7 @@ export default function Board({ user, data }: BoardProps) {
                               <FiEdit2 size={20} />
                               <span>Editar</span>
                            </button>
-                           <button className={styles.delete} onClick={() => { }}>
+                           <button className={styles.delete} onClick={() => { handleDelete(task.id) }}>
                               <FiTrash2 size={20} />
                               <span>Excluir</span>
                            </button>
