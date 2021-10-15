@@ -48,6 +48,8 @@ export default function Board({ user, data }: BoardProps) {
    // useState<TaskList[]> --- Informando que é uma state do tipo TaskList (criado ali em cima) e [] um array desse tipo
    const [taskList, setTaskList] = useState<TaskList[]>(JSON.parse(data));
 
+   const [editing, setEditing] = useState<TaskList | null>(null);
+
    async function handleSubmit(e: FormEvent) {
       e.preventDefault();
 
@@ -56,28 +58,49 @@ export default function Board({ user, data }: BoardProps) {
          return;
       }
 
-      await firebase.firestore().collection(user.id).add({
-         createdAt: new Date(),
-         tarefa: task,
-         owner: user.nome
-      })
-      .then((doc) => {
-         console.log('Cadastrado com sucesso!');
-         let data = {
-            id: doc.id,
+      // Verificando se o usuário está editando a tarefa
+      if (editing === null) {
+
+         await firebase.firestore().collection(user.id).add({
             createdAt: new Date(),
-            createdAtFormated: format(new Date(), 'dd MMMM yyyy'),
             tarefa: task,
             owner: user.nome
-         }
+         })
+         .then((doc) => {
+            console.log('Cadastrado com sucesso!');
+            let data = {
+               id: doc.id,
+               createdAt: new Date(),
+               createdAtFormated: format(new Date(), 'dd MMMM yyyy'),
+               tarefa: task,
+               owner: user.nome
+            }
+   
+            setTaskList([...taskList, data]);
+            setTask('');
+         })
+         .catch((err) => {
+            console.log(err);
+         })
+      } else {
+         await firebase.firestore().collection(user.id).doc(editing.id).update({
+            tarefa: task
+         })
+         .then(() => {
+            console.log('Atualizado com sucesso');
+            let data = taskList;
+            let index = taskList.findIndex(item => item.id === editing.id);
 
-         setTaskList([...taskList, data]);
-         setTask('');
-      })
-      .catch((err) => {
-         console.log(err);
-      })
+            data[index].tarefa = task;
+            setTaskList(data);
 
+            setEditing(null);
+            setTask('');
+         })
+         .catch((err) => {
+            console.log('Erro ao atualizar tarefa ', err);
+         })
+      }
    }
 
    async function handleDelete(id:string) {
@@ -96,6 +119,17 @@ export default function Board({ user, data }: BoardProps) {
       })
    }
 
+   // Função de Edição das tasks
+   function handleEdit(editingTask: TaskList){
+      setEditing(editingTask);
+      setTask(editingTask.tarefa);
+   }
+
+   function handleCancel(){
+      setEditing(null);
+      setTask('');
+   }
+
    return (
       // Editando cabeçalho da página
       <>
@@ -107,9 +141,20 @@ export default function Board({ user, data }: BoardProps) {
             <form onSubmit={handleSubmit}>
                <input type="text" placeholder="Digite sua tarefa" value={task} onChange={(e) => setTask(e.target.value)} />
                <button type="submit">
-                  <FiPlus size={24} />
+                  {editing ? (
+                     <FiEdit2 size={24} />
+                  ) : (
+                     <FiPlus size={24} />
+                  )}
                </button>
             </form>
+
+            {editing && (
+               <div className={styles.editingTrue}>
+                  <span>Você está editando uma tarefa! </span>
+                  <button onClick={ handleCancel }>Clique aqui</button><span>para sair</span>
+               </div>
+            )}
 
             {taskList.length > 0 ? (
                taskList.length === 1 ?
@@ -132,7 +177,7 @@ export default function Board({ user, data }: BoardProps) {
                               <FiCalendar size={20} />
                               <time>{task.createdAtFormated}</time>
                            </div>
-                           <button className={styles.edit}>
+                           <button className={styles.edit} onClick={ () => handleEdit(task)}>
                               <FiEdit2 size={20} />
                               <span>Editar</span>
                            </button>

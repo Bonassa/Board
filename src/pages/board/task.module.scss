@@ -1,0 +1,30 @@
+
+#details {
+   background-color: var(--primaryC);
+   padding: 1rem;
+   border-radius: 8px;
+
+   h3 {
+      color: var(--emphasis);
+      font-size: 1.2rem;
+      line-height: 150%;
+   }
+
+   div {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      color: var(--bg);
+      margin-bottom: 1.2rem;
+
+      span {
+         color: var(--emphasis);
+      }
+
+      svg {
+         color: var(--emphasis);
+         margin-right: 0.2rem;
+      }
+
+   }
+}
