@@ -8,8 +8,26 @@ import { GetStaticProps } from 'next';
 
 // Para a criação de titulos dinâmicos utilizaremos o Head do Next/Head
 import Head from 'next/head';
+import firebase from '../services/firebaseConnection';
 
-export default function Home() {
+type Donaters = {
+   id: string;
+   donate: boolean;
+   image: string;
+   lastDonate: Date;
+   name: string;
+}
+
+interface DonatersProps {
+   data: string;
+}
+
+export default function Home({ data } : DonatersProps) {
+
+   const donaters = JSON.parse(data) as Donaters[];
+
+   console.log(donaters);
+
    return (
       <>
          {/**Aqui dentro colocaremos uma tag head, para alterações no <head> do html dessa página
@@ -33,21 +51,9 @@ export default function Home() {
                <h4>Apoiadores</h4>
 
                <div>
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
-                  <img src="https://sujeitoprogramador.com/steve.png" alt="Foto do usuário" />
+                  {donaters.map(donate => (
+                     <img key={donate.id} src={donate.image} alt={donate.name} />
+                  ))}
                </div>
             </div>
          </div>
@@ -59,9 +65,19 @@ export default function Home() {
 // Fazendo a geração estatica da página, com o getStaticProps
 // os : são para tipagem com o typeScript
 export const getStaticProps: GetStaticProps = async () => {
+
+   let donaters = await firebase.firestore().collection('donaters').get();
+
+   const data = JSON.stringify(donaters.docs.map((item) => {
+      return {
+         id: item.id,
+         ...item.data()
+      }
+   }));
+
    return {
       props: {
-
+         data
       },
       // A quanto tempo a página será regerada no servidor, (em segundos)
       revalidate: 60 * 60 

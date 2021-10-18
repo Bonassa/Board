@@ -11,6 +11,9 @@ import Head from 'next/head';
 
 import { FiCalendar } from 'react-icons/fi';
 
+// Importando o botão de apoiar
+import SupportButton from '../../components/SupportButton';
+
 //import { useState } from 'react';
 
 import firebase from '../../services/firebaseConnection';
@@ -48,6 +51,8 @@ export default function Task({ tarefa }: TaskListProps){
                </div>
                <h3>{task.tarefa}</h3>
             </div>
+
+            <SupportButton/>
          </main>
       </>
    )

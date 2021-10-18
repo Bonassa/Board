@@ -79,3 +79,10 @@ O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
    ```bash
       npm install date-fns
    ```
+
+### PayPal - [React PayPal JS](https://github.com/paypal/react-paypal-js)
+   Para pagamentos dos apoiadores, foi utilizado o paypal
+
+   ```bash
+      npm install @paypal/react-paypal-js
+   ```

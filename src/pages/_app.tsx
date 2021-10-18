@@ -16,15 +16,28 @@ import '../styles/global.scss';
 // Renomeando o provider para ficar mais facil de identificar
 import { Provider as NextAuthProvider } from 'next-auth/client';
 
+// Adicionando o Provider do PayPal
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+
+// Criando um objeto com os parâmetros necessários para o provider do paypal
+const initialOptions = {
+	"client-id": "AQsyaZ-gLNPhwf_Sgp-H5K4VmceHaIpZFYewM8gfGAiE5uGr-z4A8-tNlKoT11CRIGSX6n1n3Mou_QPs",
+	currency: "BRL",
+	intent: "capture", 
+}
+
 // Acidionando tipagem no Component
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		// Envolvendo toda a aplicação com o Provider do auth, passando por parâmentro a nossa session
 		<NextAuthProvider session={pageProps.session}>
-			{/**Adicionando o Header */}
-			<Header/>
-			{/* Essa tag é responsável por renderizar as páginas*/}
-			<Component {...pageProps} />
+			{/**Adicionando o provider do PayPal */}
+			<PayPalScriptProvider options={initialOptions}>
+				{/**Adicionando o Header */}
+				<Header/>
+				{/* Essa tag é responsável por renderizar as páginas*/}
+				<Component {...pageProps} />
+			</PayPalScriptProvider>
 		</NextAuthProvider>
 	)
 }
