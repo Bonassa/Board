@@ -7,6 +7,7 @@ import styles from './task.module.scss';
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/client"
 import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import Head from 'next/head';
 
 import { FiCalendar } from 'react-icons/fi';
@@ -86,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
          let dados = {
             id: snapshot.id,
             createdAt: snapshot.data().createdAt,
-            createdAtFormated: format(snapshot.data().createdAt.toDate(), 'dd MMMM yyyy'),
+            createdAtFormated: format(snapshot.data().createdAt.toDate(), 'dd MMMM yyyy', { locale: ptBR }),
             tarefa: snapshot.data().tarefa,
             owner: snapshot.data().owner
          }

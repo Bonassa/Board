@@ -1,6 +1,7 @@
 # [Board](https://board-bonassa.vercel.app/)
 
 O Board é uma aplicação web para gerenciamento de tarefas (To Do List).
+Esta hospedado pela [Versel](https://vercel.com/) e disponível em https://board-bonassa.vercel.app/  
 
 ## Como utilizar
 

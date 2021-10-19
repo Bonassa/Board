@@ -74,7 +74,7 @@ export default function Board({ user, data }: BoardProps) {
             let data = {
                id: doc.id,
                createdAt: new Date(),
-               createdAtFormated: format(new Date(), 'dd MMMM yyyy'),
+               createdAtFormated: format(new Date(), 'dd MMMM yyyy', { locale: ptBR }),
                tarefa: task,
                owner: user.nome
             }
