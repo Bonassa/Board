@@ -7,7 +7,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 // Este é o único componente que o Next pede para exportar em formato de classe, pois ele extende o Document
-export default class MyDocument extends Document{
+export default class MyDocument extends Document {
    // Como é uma classe, deve-se passar o render
    render(){
       return(
