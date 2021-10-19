@@ -12,7 +12,8 @@ import { useState, FormEvent } from 'react';
 import firebase from '../../services/firebaseConnection';
 
 // Para formatações de datas
-import { format } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 import Link from 'next/link';
 
@@ -35,6 +36,8 @@ interface BoardProps {
    user: {
       nome: string;
       id: string;
+      donater: boolean;
+      lastDonate: Date;
    },
    data: string;
 }
@@ -177,10 +180,13 @@ export default function Board({ user, data }: BoardProps) {
                               <FiCalendar size={20} />
                               <time>{task.createdAtFormated}</time>
                            </div>
-                           <button className={styles.edit} onClick={ () => handleEdit(task)}>
-                              <FiEdit2 size={20} />
-                              <span>Editar</span>
-                           </button>
+
+                           {user.donater && (
+                              <button className={styles.edit} onClick={ () => handleEdit(task)}>
+                                 <FiEdit2 size={20} />
+                                 <span>Editar</span>
+                              </button>
+                           )}
                            <button className={styles.delete} onClick={() => { handleDelete(task.id) }}>
                               <FiTrash2 size={20} />
                               <span>Excluir</span>
@@ -192,13 +198,16 @@ export default function Board({ user, data }: BoardProps) {
             </section>
          </main>
 
-         <div className={styles.sponsorView}>
-            <h3>Obrigado por apoiar esse projeto!</h3>
-            <div>
-               <FiClock size={24} />
-               <span>Última doação à 3 dias.</span>
+         {user.donater && (
+            <div className={styles.sponsorView}>
+               <h3>Obrigado {user.nome.split(" ", 1)} por apoiar esse projeto!</h3>
+               <div>
+                  <FiClock size={24} />
+                  {/**Pegando a diferença entre o dia que ele doou e hj */}
+                  <span>Última doação à {formatDistance(new Date(user.lastDonate), new Date(), { locale: ptBR })}</span>
+               </div>
             </div>
-         </div>
+         )}
 
          <SupportButton />
       </>
@@ -226,7 +235,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
    // Montando um usuário para retornar para a renderização da página
    const user = {
       nome: session?.user.name,
-      id: session?.id
+      id: session?.id,
+      donater: session?.donater,
+      lastDonate: session?.lastDonate
    }
 
    // Buscando as tarefas do lado do servidor
@@ -235,7 +246,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
    const data = JSON.stringify(tasks.docs.map( u => {
       return {
          id: u.id,
-         createdAtFormated: format(u.data().createdAt.toDate(), 'dd MMMM yyyy'),
+         createdAtFormated: format(u.data().createdAt.toDate(), 'dd MMMM yyyy', { locale: ptBR }),
          ...u.data(),
       }
    }));

@@ -21,7 +21,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 // Criando um objeto com os parâmetros necessários para o provider do paypal
 const initialOptions = {
-	"client-id": "AQsyaZ-gLNPhwf_Sgp-H5K4VmceHaIpZFYewM8gfGAiE5uGr-z4A8-tNlKoT11CRIGSX6n1n3Mou_QPs",
+	"client-id": "AayGf6Bh_fF-kEHMEt2Lc7Nnfhb85hg2XXAry5-CUVZKYKPRWR0l3-yKDdiVdbNS_09oIjwTglFfmshM",
 	currency: "BRL",
 	intent: "capture", 
 }

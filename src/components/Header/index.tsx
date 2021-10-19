@@ -8,6 +8,9 @@ import SignInButton from '../SignInButton';
 // Importando o Link para navegações entre páginas
 import Link from 'next/link';
 
+import Image from 'next/image';
+import logo from '../../../public/images/logo.svg';
+
 export default function Header(){
    return(
       // Utilizando a tag header para ajudar no SEO
@@ -16,7 +19,9 @@ export default function Header(){
             <div id={styles.logo}>
                {/**Para referenciar o src, o next já espera que esteja na pasta public as images */}
                <Link href="/">
-                  <img src="/images/logo.svg" alt="Logo Board" />
+                  <a>
+                     <Image src={logo} alt="Logo Board" />
+                  </a>
                </Link>
             </div>
             <nav>

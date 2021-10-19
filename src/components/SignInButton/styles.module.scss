@@ -34,25 +34,33 @@
       }
    }
 
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   border: none;
+   background-color: transparent;
+   color: var(--white);
+
+   img {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+   }
+
+   span {
+      margin-left: 0.5rem;
+   }
+
    #sessionOn {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
       border: none;
       background-color: transparent;
       color: var(--white);
-
-      img {
-         width: 2rem;
-         height: 2rem;
-         border-radius: 50%;
-         margin-right: 0.5rem;
-      }
+      margin-left: 1rem;
 
       svg {
          color: var(--secondary);
-         margin-left: 1rem;
          margin-top: 3px;
 
          &:hover {

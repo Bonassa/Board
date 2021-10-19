@@ -10,6 +10,10 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import firebase from '../services/firebaseConnection';
 
+// Importando o Next/Image para otimizar o trabalho com images
+import Image from 'next/image';
+import board from '../../public/images/board-user.svg';
+
 type Donaters = {
    id: string;
    donate: boolean;
@@ -26,8 +30,6 @@ export default function Home({ data } : DonatersProps) {
 
    const donaters = JSON.parse(data) as Donaters[];
 
-   console.log(donaters);
-
    return (
       <>
          {/**Aqui dentro colocaremos uma tag head, para alterações no <head> do html dessa página
@@ -40,7 +42,7 @@ export default function Home({ data } : DonatersProps) {
 
          <div className={styles.container}>
             <div className={styles.banner}>
-               <img src="/images/board-user.svg" alt="Imagem de um notbook exemplificando aplicação" />
+               <Image src={board} alt="Imagem de um notbook exemplificando aplicação" />
             </div>
             <div className={styles.pageContent}>
                <h1>Uma Ferramenta para Organizar a sua Vida</h1>
@@ -52,7 +54,7 @@ export default function Home({ data } : DonatersProps) {
 
                <div>
                   {donaters.map(donate => (
-                     <img key={donate.id} src={donate.image} alt={donate.name} />
+                     <img key={donate.id} src={donate.image} alt={donate.name}  />
                   ))}
                </div>
             </div>
@@ -62,7 +64,7 @@ export default function Home({ data } : DonatersProps) {
 }
 
 
-// Fazendo a geração estatica da página, com o getStaticProps
+// Fazendo a geração estatica da página, com o getStaticProps | Não funciona em modo DEV
 // os : são para tipagem com o typeScript
 export const getStaticProps: GetStaticProps = async () => {
 

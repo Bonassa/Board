@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
    var tarefa = {};
 
    // Validando se o usuário está logado
-   if(!session){
+   if(!session.donater){
       return {
          redirect: {
             destination: '/',
@@ -81,20 +81,33 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
    // Verificando no banco de dados a task desse id
    await firebase.firestore().collection(`${session.id}`).doc(`${id}`).get()
    .then((snapshot) => {
-      let dados = {
-         id: snapshot.id,
-         createdAt: snapshot.data().createdAt,
-         createdAtFormated: format(snapshot.data().createdAt.toDate(), 'dd MMMM yyyy'),
-         tarefa: snapshot.data().tarefa,
-         owner: snapshot.data().owner
-      }
 
-      tarefa = JSON.stringify(dados);
+      if (snapshot.exists) {
+         let dados = {
+            id: snapshot.id,
+            createdAt: snapshot.data().createdAt,
+            createdAtFormated: format(snapshot.data().createdAt.toDate(), 'dd MMMM yyyy'),
+            tarefa: snapshot.data().tarefa,
+            owner: snapshot.data().owner
+         }
+   
+         tarefa = JSON.stringify(dados);
+      } 
 
    })
    .catch((err) => {
       console.log(err);
    })
+
+   // Verificando se houve erro ao buscar no banco | Objeto vazio
+   if(Object.keys(tarefa).length === 0) {
+      return {
+         redirect: {
+            destination: '/board',
+            permanent: false
+         }
+      }
+   }
    
    return {
       props: {

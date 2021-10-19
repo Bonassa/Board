@@ -6,6 +6,9 @@ import { getSession } from 'next-auth/client';
 import firebase from '../../services/firebaseConnection';
 import { useState } from 'react';
 
+import Image from 'next/image';
+import rocket from '../../../public/images/rocket.svg';
+
 // Importando botões do PayPal
 import { PayPalButtons } from '@paypal/react-paypal-js'
 
@@ -42,7 +45,7 @@ export default function Donate({ user } : UserProps){
          </Head>
 
          <main id={styles.container}>
-            <img src="images/rocket.svg" alt="Foguete" />
+            <Image src={rocket} alt="Foguete" />
 
             {donater ? (
                <div className={styles.sponsor}>
