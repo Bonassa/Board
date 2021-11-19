@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
    render(){
       return(
          //Nessa parte iremos poder montar uma estrutura personalizada de HTML para ser renderizada
-         <Html>
+         <Html lang="pt-BR">
             <Head>
                {/** Normal igual ao head do HTML
                 * Fontes personalizadas, favicon, scripts etc...
@@ -21,6 +21,7 @@ export default class MyDocument extends Document {
                <link rel="preconnect" href="https://fonts.googleapis.com" />
                <link rel="preconnect" href="https://fonts.gstatic.com" />
                <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand&display=swap" rel="stylesheet" />
+               <meta name="description" content="Organize suas tarefas do dia a dia, de uma maneira fácil intuitiva e o melhor de tudo, 100% gratuíto" />
             </Head>
             <body>
                {/**O body é o padrão do html, não precisa importar ele 
